@@ -27,7 +27,7 @@ const promises = [promise1(), promise2(), promise3()];
 Promise.all(promises)
     .then((results) => {
         const output = document.getElementById('output');
-        const loadingRow = document.getElementById('loading-row');
+        const loadingRow = document.getElementById('loading');
         output.removeChild(loadingRow);
         let totalTime = 0;
         results.forEach((result) => {
