@@ -6,6 +6,7 @@ const promise1 = () => {
         },randomTime);
     });
 }
+
 const promise2 = () => {
     return new Promise((resolve) => {
         const randomTime = Math.floor(Math.random() * 3000) + 1000;
@@ -23,18 +24,15 @@ const promise3 = () => {
     });
 }
 const promises = [promise1(), promise2(), promise3()];
-
 Promise.all(promises)
     .then((results) => {
         const output = document.getElementById('output');
-        const loadingRow = document.getElementById('loading-row');
+        const loadingRow = document.getElementById('loading');
         output.removeChild(loadingRow);
-
         let totalTime = 0;
         results.forEach((result) => {
             const { name, time } = result;
             totalTime += time;
-
             const row = document.createElement('tr');
             row.innerHTML = `
                 <td>${name}</td>
@@ -42,7 +40,6 @@ Promise.all(promises)
             `;
             output.appendChild(row);
         });
-
         const totalRow = document.createElement('tr');
         totalRow.innerHTML = `
             <td>Total</td>
